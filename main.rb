@@ -1,5 +1,7 @@
 require 'sinatra'
 
+set :erb, layout: :layout, format: :html5
+
 get '/' do
-  "Website!"
+  erb :index
 end

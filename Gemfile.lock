@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     json (2.0.3)
+    newrelic_rpm (3.18.0.329)
     rack (1.6.5)
     rack-protection (1.5.3)
       rack
@@ -22,6 +23,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  newrelic_rpm
   recaptcha
   sendgrid-ruby
   sinatra

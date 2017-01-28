@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/flash'
 require 'recaptcha'
 require 'sendgrid-ruby'
+require 'newrelic_rpm'
 
 Recaptcha.configure do |config|
   config.site_key  = ENV['RECAPTCHA_SITE_KEY']

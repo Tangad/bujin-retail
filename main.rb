@@ -42,10 +42,13 @@ post '/send_email' do
 
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
     response = sg.client.mail._('send').post(request_body: mail.to_json)
-    flash['alert alert-success'] = "Thank you for your email. We will respond as quickly as possible!"
-    "#{response.status_code} - #{response.body} - #{response.headers}"
+    if response.status_code != '202'
+      flash['alert alert-danger'] = "There was a problem sending your email. Please try again later."
+    else
+      flash['alert alert-success'] = "Thank you for your email. We will respond as quickly as possible!"
+    end
   else
-    flash['alert alert-danger'] = "Sorry, there was a problem sending your email. Please try again later."
+    flash['alert alert-danger'] = "Please verify that you are a human with the Recaptcha widget."
   end
 
   redirect '/contact'

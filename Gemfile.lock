@@ -33,6 +33,7 @@ PLATFORMS
 
 DEPENDENCIES
   chronic_duration
+  json
   newrelic_rpm
   pg
   rake

@@ -5,6 +5,7 @@ require 'sendgrid-ruby'
 require 'newrelic_rpm'
 require 'will_paginate'
 require 'will_paginate/sequel'
+require 'json'
 
 require_relative 'models/ebay_listing'
 
@@ -59,4 +60,14 @@ post '/send_email' do
   end
 
   redirect '/contact'
+end
+
+def site_name_structured_data
+  {
+    '@context'      => 'http://schema.org',
+    '@type'         => 'WebSite',
+    'name'          => 'Bujin-Retail',
+    'alternateName' => 'Japanese Fashion Hair Accessories',
+    'url'           => 'http://www.bujin-retail.com'
+  }.to_json
 end

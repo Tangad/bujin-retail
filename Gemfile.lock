@@ -1,16 +1,24 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    chronic_duration (0.10.6)
+      numerizer (~> 0.1.1)
     json (2.0.3)
     newrelic_rpm (3.18.0.329)
+    numerizer (0.1.1)
+    pg (0.18.4)
     rack (1.6.5)
     rack-protection (1.5.3)
       rack
+    rake (11.1.2)
+    rebay (1.2.0)
+      json
     recaptcha (4.0.1)
       json
     ruby_http_client (3.0.1)
     sendgrid-ruby (4.0.7)
       ruby_http_client (~> 3.0.1)
+    sequel (4.33.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -18,16 +26,23 @@ GEM
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
     tilt (2.0.5)
+    will_paginate (3.0.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  chronic_duration
   newrelic_rpm
+  pg
+  rake
+  rebay
   recaptcha
   sendgrid-ruby
+  sequel
   sinatra
   sinatra-flash
+  will_paginate
 
 BUNDLED WITH
-   1.13.7
+   1.14.3

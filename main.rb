@@ -3,6 +3,10 @@ require 'sinatra/flash'
 require 'recaptcha'
 require 'sendgrid-ruby'
 require 'newrelic_rpm'
+require 'will_paginate'
+require 'will_paginate/sequel'
+
+require_relative 'models/ebay_listing'
 
 Recaptcha.configure do |config|
   config.site_key  = ENV['RECAPTCHA_SITE_KEY']
@@ -18,6 +22,8 @@ enable :sessions
 set :erb, layout: :layout, format: :html5
 
 get '/' do
+  page_num = (params[:page] || 1).to_i
+  @ebay_listings = EbayListing.order(:end_time).paginate(page_num, 8)
   erb :index
 end
 

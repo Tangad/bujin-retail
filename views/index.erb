@@ -4,5 +4,39 @@
     Welcome to Bujin-retail.com. We are proud to recommend to you the highest quality fashion hair accessories imported from Japan. We sell Japanese Kanzashi/Hair Sticks, Hair Pins, Hair claws and barrettes which are very chic and fashionable, and shipping is free.
   </div>
   <hr>
-  <div id="auction-nudge-items" class="auction-nudge"></div>
+  <div class="row">
+    <%= will_paginate @ebay_listings %>
+  </div>
+  <div class="row">
+    <% @ebay_listings.each do |ebay_listing| %>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="row">
+          <a href="<%= ebay_listing.listing_url %>" target="_blank"><%= ebay_listing.title %></a>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <a href="<%= ebay_listing.listing_url %>" target="_blank">
+              <img src="<%= ebay_listing.thumbnail_url %>" alt="<%= ebay_listing.title %>" style="width:100%;">
+            </a>
+          </div>
+          <div class="col-xs-8">
+            <div class="row">
+              <strong>$<%= sprintf("%.2f" % ebay_listing.price) %></strong>
+            </div>
+            <div class="row">
+              Time Left: <%= ebay_listing.time_remaining %>
+            </div>
+            <div class="row">
+              <a href="<%= ebay_listing.listing_url %>" target="_blank">
+                Buy It Now <span class="glyphicon glyphicon-share"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= will_paginate @ebay_listings %>
+  </div>
 </div>

@@ -24,7 +24,7 @@ set :erb, layout: :layout, format: :html5
 
 get '/' do
   page_num = (params[:page] || 1).to_i
-  @ebay_listings = EbayListing.order(:end_time).paginate(page_num, 8)
+  @ebay_listings = EbayListing.order(:end_time).paginate(page_num, 12)
   erb :index
 end
 
